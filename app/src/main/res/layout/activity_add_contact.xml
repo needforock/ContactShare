@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context="ve.needforock.contactshare.views.addContact.AddContactActivity">
+
+    <com.github.siyamed.shapeimageview.CircularImageView
+        android:id="@+id/contactPhotoCi"
+        android:clickable="true"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="left"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="16dp"
+        android:src="@mipmap/ic_account_circle_white_24dp"
+        app:siBorderColor="@android:color/darker_gray"
+        app:siBorderWidth="6dp"/>
+
+    <EditText
+        android:id="@+id/contactNameEt"
+        android:layout_marginTop="54dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:hint="Nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/contactPhotoCi"/>
+
+    <EditText
+        android:hint="Telefono"
+        android:id="@+id/contactPhoneEt"
+        android:inputType="phone"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contactPhotoCi"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"/>
+
+    <EditText
+        android:id="@+id/contactMailEt"
+        android:hint="Correo"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contactPhoneEt"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"/>
+
+    <RadioGroup
+        android:id="@+id/groupRg"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/contactMailEt">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Familia" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Amigo" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Otro" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:theme="@style/BottomButton"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:theme="@style/AccentButton"
+            android:layout_marginRight="2dp"
+            android:id="@+id/cancelBtn"
+            android:text="Cancelar"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <Button
+            android:theme="@style/AccentButton"
+            android:layout_marginLeft="2dp"
+            android:id="@+id/saveBtn"
+            android:text="Guardar"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             />
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
