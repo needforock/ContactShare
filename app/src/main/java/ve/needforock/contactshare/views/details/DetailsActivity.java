@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.siyamed.shapeimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
@@ -39,6 +41,7 @@ public class DetailsActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(contact.getName());
 
         RoundedImageView imageView = (RoundedImageView) findViewById(R.id.detailPictureIm);
+        ImageView emptyImage = (ImageView) findViewById(R.id.emptyImageIv);
         TextView name = (TextView) findViewById(R.id.detailNameTv);
         TextView mail = (TextView) findViewById(R.id.detailMailTv);
         TextView phone = (TextView) findViewById(R.id.detailPhoneTv);
@@ -51,10 +54,15 @@ public class DetailsActivity extends AppCompatActivity {
 
 
        if(contact.getPhoto().trim().length()>0) {
+           emptyImage.setVisibility(View.INVISIBLE);
 
            Picasso.with(DetailsActivity.this).invalidate(contact.getPhoto());
            Picasso.with(DetailsActivity.this).load(contact.getPhoto()).into(imageView);
-        }
+        }else{
+           emptyImage.setVisibility(View.VISIBLE);
+       }
+
+
 
         Button edit = (Button) findViewById(R.id.editBtn);
         edit.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +81,7 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new ContactToFireBase().eraseContactFb(contact);
+                Toast.makeText(DetailsActivity.this, "Contacto Eliminado", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

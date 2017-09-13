@@ -45,7 +45,7 @@ public class AddContactActivity extends AppCompatActivity implements ContactVali
     private String path;
     private int editFlag;
     private Contact contactToEdit;
-    private String uid;
+    private String contactKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,7 @@ public class AddContactActivity extends AppCompatActivity implements ContactVali
         };
         magicalPermissions = new MagicalPermissions(this, permissions);
         magicalCamera = new MagicalCamera(AddContactActivity.this, RESIZE_PHOTO_PIXELS_PERCENTAGE, magicalPermissions);
+
         contactPhoto = (CircularImageView) findViewById(R.id.contactPhotoCi);
 
         contactPhoto.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +86,7 @@ public class AddContactActivity extends AppCompatActivity implements ContactVali
         if(editFlag ==1){
 
             contactToEdit = (Contact) getIntent().getSerializableExtra(CONTACT_EDIT);
-            uid = contactToEdit.getUid();
+            contactKey = contactToEdit.getKey();
             nameEt.setText(contactToEdit.getName());
             phoneEt.setText(contactToEdit.getPhone());
             mailEt.setText(contactToEdit.getMail());
@@ -129,7 +130,8 @@ public class AddContactActivity extends AppCompatActivity implements ContactVali
         }
 
 
-        new ContactToFireBase().saveContactPhoto(name, phone, mail, answer, path, uid, editFlag);
+       new ContactToFireBase().saveContactPhoto(name, phone, mail, answer, path, contactKey, editFlag);
+
         finish();
     }
 
@@ -162,10 +164,13 @@ public class AddContactActivity extends AppCompatActivity implements ContactVali
         if (RESULT_OK == resultCode) {
 
             Bitmap photo = magicalCamera.getPhoto();
+
             path = magicalCamera.savePhotoInMemoryDevice(photo, "contactPhoto", "myDirectoryName", MagicalCamera.JPEG, true);
+
             path = "file://" + path;
             Toast.makeText(this, "result ok", Toast.LENGTH_SHORT).show();
             setPhoto(path);
+
         } else {
             Toast.makeText(this, "Foto No Tomada", Toast.LENGTH_SHORT).show();
         }

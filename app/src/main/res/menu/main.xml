@@ -2,8 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_family"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Familia"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_friends"
+        android:orderInCategory="100"
+        android:title="Amigos"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_all"
+        android:orderInCategory="100"
+        android:title="Todos"
         app:showAsAction="never" />
 </menu>

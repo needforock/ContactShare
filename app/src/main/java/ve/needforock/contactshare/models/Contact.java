@@ -7,23 +7,37 @@ import java.io.Serializable;
  */
 
 public class Contact implements Serializable {
-    String name;
-    String phone;
-    String mail;
-    String photo;
-    String group;
+    private String name, phone, mail, photo, group,key, group_name;
+    private long timeStamp;
 
-    public String getUid() {
-        return uid;
-    }
 
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
 
-    String uid;
 
     public Contact() {
+    }
+
+    public String getGroup_name() {
+        return group_name;
+    }
+
+    public void setGroup_name(String group_name) {
+        this.group_name = group_name;
+    }
+
+    public long getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(long timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getName() {

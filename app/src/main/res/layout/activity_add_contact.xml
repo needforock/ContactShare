@@ -21,6 +21,7 @@
 
     <EditText
         android:id="@+id/contactNameEt"
+        android:inputType="textCapWords"
         android:layout_marginTop="54dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
