@@ -20,15 +20,16 @@
         tools:showIn="@layout/activity_details">
 
         <LinearLayout
-            android:layout_marginTop="40dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:orientation="vertical">
 
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
             <com.github.siyamed.shapeimageview.RoundedImageView
                 android:id="@+id/detailPictureIm"
                 android:layout_width="match_parent"
@@ -41,7 +42,6 @@
 
                 <ImageView
                     android:id="@+id/emptyImageIv"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/ic_insert_photo_white_48dp"
@@ -80,6 +80,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
                 android:textSize="16sp" />
+
 
         </LinearLayout>
 

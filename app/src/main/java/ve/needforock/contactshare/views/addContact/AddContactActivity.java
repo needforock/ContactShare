@@ -30,22 +30,16 @@ import static ve.needforock.contactshare.views.details.DetailsActivity.EDIT_FLAG
 
 public class AddContactActivity extends AppCompatActivity implements ContactValidationCallBack {
 
-    private EditText nameEt;
-    private String name;
-    private EditText phoneEt;
-    private String phone;
-    private EditText mailEt;
-    private String mail;
-    private String answer;
+    private EditText nameEt, phoneEt, mailEt;
+    private String name, phone, mail, answer, path, contactKey;
     private RadioGroup group;
     private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 20;
     private MagicalPermissions magicalPermissions;
     private MagicalCamera magicalCamera;
     private CircularImageView contactPhoto;
-    private String path;
     private int editFlag;
     private Contact contactToEdit;
-    private String contactKey;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

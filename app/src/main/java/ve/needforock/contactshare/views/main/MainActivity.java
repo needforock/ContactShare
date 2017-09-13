@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements ContactListener {
     private ContactAdapter adapter;
     private Query query;
     private DatabaseReference ref;
-    private int filter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity implements ContactListener {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
         getSupportActionBar().setTitle("Todos mis Contactos");
 
         progressDialog = new ProgressDialog(this);
@@ -52,12 +50,9 @@ public class MainActivity extends AppCompatActivity implements ContactListener {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-
-
         ref = new Queries().Contacts();
         query = ref.orderByChild("name");
-        adapter = new ContactAdapter(this, query);
-        recyclerView.setAdapter(adapter);
+        adapterSet(query);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -100,49 +95,36 @@ public class MainActivity extends AppCompatActivity implements ContactListener {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_family) {
-            filter = 1;
-            query = ref.orderByChild("group_name").startAt("Familia");
-            adapter = new ContactAdapter(this, query);
             getSupportActionBar().setTitle("Familia");
-            recyclerView.setAdapter(adapter);
+            query = ref.orderByChild("group_name").startAt("Familia");
+            adapterSet(query);
             return true;
         }
         if (id == R.id.action_friends) {
-            filter = 2;
             getSupportActionBar().setTitle("Amigos");
             query = ref.orderByChild("group_name").startAt("Amigo").endAt("F");
-            adapter = new ContactAdapter(this, query);
-            recyclerView.setAdapter(adapter);
+            adapterSet(query);
             return true;
-
         }
         if (id == R.id.action_all) {
-            filter = 3;
             getSupportActionBar().setTitle("Todos mis Contactos");
             query = ref.orderByChild("name");
-            adapter = new ContactAdapter(this, query);
-            recyclerView.setAdapter(adapter);
+            adapterSet(query);
             return true;
-
         }
-
-
         return super.onOptionsItemSelected(item);
     }
 
-
+    public void adapterSet(Query query){
+        adapter = new ContactAdapter(this, query);
+        recyclerView.setAdapter(adapter);
+    }
 }

@@ -39,7 +39,7 @@ public class ContactToFireBase {
         new Nodes().user(key).child("contacts").child(contactKey).child("timeStamp").setValue(ServerValue.TIMESTAMP);
     }
 
-    public void saveContactPhoto(final String name, final String phone, final String mail, final String group, String path, final String uid, final int editFlag) {
+    public void saveContactPhoto(final String name, final String phone, final String mail, final String group, String path, final String contactKey, final int editFlag) {
 
         if (path != null) {
             final CurrentUser currentUser = new CurrentUser();
@@ -55,7 +55,7 @@ public class ContactToFireBase {
                     @SuppressWarnings("VisibleForTests") String[] fullUrl = taskSnapshot.getDownloadUrl().toString().split("&token");
                     String photoUrl = fullUrl[0];
                     if (editFlag == 1) {
-                        editedToFireBase(name, phone, mail, group, photoUrl, uid);
+                        editedToFireBase(name, phone, mail, group, photoUrl, contactKey);
                     } else {
                         saveContactToFireBase(name, phone, mail, group, photoUrl);
                     }
@@ -64,7 +64,7 @@ public class ContactToFireBase {
 
         } else {
             if (editFlag == 1) {
-                editedToFireBase(name, phone, mail, group, "", uid);
+                editedToFireBase(name, phone, mail, group, "", contactKey);
             } else {
                 saveContactToFireBase(name, phone, mail, group, "");
             }
