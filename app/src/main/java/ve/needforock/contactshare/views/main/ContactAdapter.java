@@ -36,7 +36,6 @@ public class ContactAdapter extends FirebaseRecyclerAdapter<Contact, ContactAdap
     protected void onDataChanged() {
         super.onDataChanged();
         listener.dataChange();
-
     }
 
 
@@ -57,9 +56,9 @@ public class ContactAdapter extends FirebaseRecyclerAdapter<Contact, ContactAdap
                 listener.clicked(auxContact);
             }
         });
-
-
     }
+
+
 
     public static class ContactHolder extends RecyclerView.ViewHolder{
 
