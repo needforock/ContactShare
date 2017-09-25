@@ -11,17 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 import ve.needforock.contactshare.R;
 import ve.needforock.contactshare.data.Queries;
@@ -29,7 +24,7 @@ import ve.needforock.contactshare.models.Contact;
 import ve.needforock.contactshare.views.addContact.AddContactActivity;
 import ve.needforock.contactshare.views.details.DetailsActivity;
 
-public class MainActivity extends AppCompatActivity implements ContactListener, CountCallback{
+public class MainActivity extends AppCompatActivity implements ContactListener{
 
     public static final String CONTACT = "ve.needforock.contactshare.views.main.KEY.CONTACT";
     private ProgressDialog progressDialog;
@@ -113,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements ContactListener, 
             getSupportActionBar().setTitle("Familia");
             query = ref.orderByChild("group_name").startAt("Familia");
             adapterSet(query);
-            new Presenter(MainActivity.this).contactCount(query);
+            //new Presenter(MainActivity.this).contactCount(query);
             return true;
         }
         if (id == R.id.action_friends) {
@@ -126,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements ContactListener, 
             getSupportActionBar().setTitle("Todos mis Contactos");
             query = ref.orderByChild("name");
             adapterSet(query);
-            contactCount(query);
+            //contactCount(query);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -137,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements ContactListener, 
         recyclerView.setAdapter(adapter);
     }
 
-    public void contactCount(Query query){
+   /* public void contactCount(Query query){
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -152,10 +147,10 @@ public class MainActivity extends AppCompatActivity implements ContactListener, 
             }
         });
 
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void count(String count) {
         Toast.makeText(this, count, Toast.LENGTH_SHORT).show();
-    }
+    }*/
 }
